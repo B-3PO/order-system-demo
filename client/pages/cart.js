@@ -100,19 +100,19 @@ export default class Cart extends Page {
      <mdw-list class="mdw-one-line" >
        <mdw-list-item>
          <div class="mdw-list-item__text">
-          <i>subtotal:</i> $${this.cart.subtotal}
+          <i>subtotal:</i> $${this.cart.subtotal || 0}
          </div>
         </mdw-list-item>
 
         <mdw-list-item>
           <div class="mdw-list-item__text">
-           <i>discount:</i> $${this.cart.discount}
+           <i>discount:</i> $${this.cart.discount || 0}
           </div>
          </mdw-list-item>
 
          <mdw-list-item>
            <div class="mdw-list-item__text">
-            <i>total:</i> <b style="font-size: 22px">$${this.cart.total}</b>
+            <i>total:</i> <b style="font-size: 22px">$${this.cart.total || 0}</b>
            </div>
           </mdw-list-item>
      </mdw-list>

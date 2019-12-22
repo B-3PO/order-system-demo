@@ -2,35 +2,35 @@ export default new class {
   constructor() {
     if (window.axios) {
       this.axiosClient = window.axios.create({
-        baseUrl: 'http://localhost:3001'
+        baseURL: 'http://localhost:3001/api'
       });
     }
   }
 
   async getItems() {
-    const { data } = await this.axiosClient.get('/api/items');
+    const { data } = await this.axiosClient.get('/items');
     return data.items || [];
   }
 
   async getInventory() {
-    const { data } = await this.axiosClient.get('/api/inventory');
+    const { data } = await this.axiosClient.get('/inventory');
     return data.inventory || [];
   }
 
   async getCart() {
-    const { data } = await this.axiosClient.get('/api/cart');
+    const { data } = await this.axiosClient.get('/cart');
     return data.cart || {};
   }
 
   async addToCart({ id, quantity = 1 }) {
-    await this.axiosClient.post('/api/add-item-to-cart', {
+    await this.axiosClient.post('/add-item-to-cart', {
       itemId: id,
       quantity
     });
   }
 
   async removeFromCart({ id, quantity = -1 }) {
-    const { data } = await this.axiosClient.post('/api/remove-item-from-cart', {
+    const { data } = await this.axiosClient.post('/remove-item-from-cart', {
       itemId: id,
       quantity
     });
