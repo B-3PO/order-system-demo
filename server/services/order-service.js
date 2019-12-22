@@ -81,9 +81,9 @@ exports.removeItemFromCart = async ({ itemId, quantity }) => {
   await removeModifiers(itemId, quantity);
   await removeFromCart(itemId, quantity);
   await incrementInventory(itemId, quantity);
-  // handle promotions
 
   // calculate order
+  await calculateOrder(await getCart());
 
   return getCart();
 };
