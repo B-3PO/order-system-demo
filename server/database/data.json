@@ -1,0 +1,114 @@
+{
+  "inventory": [
+      {
+        "id": 40,
+        "itemId": 10,
+        "stock": 10,
+        "available": 10
+      },
+
+      {
+        "id": 41,
+        "itemId": 11,
+        "stock": 5,
+        "available": 5
+      },
+
+      {
+        "id": 42,
+        "itemId": 12,
+        "stock": 10,
+        "available": 10
+      },
+
+      {
+        "id": 43,
+        "itemId": 13,
+        "stock": 2,
+        "available": 2
+      }
+  ],
+
+  "items": [
+    {
+      "id": 10,
+      "sku": "120P90",
+      "displayName": "Google Home",
+      "price": "49.99",
+      "modifiers": [],
+      "promotions": [
+        {
+          "id": 30,
+          "itemId": 10,
+          "name": "Buy 3 for the price of 2",
+          "autoApply": true,
+          "requirements": {
+            "minQuantity": 3
+          },
+          "adjustments": [
+            {
+              "type": "discount",
+              "properties": {
+                "amount": "49.99",
+                "percent": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": 11,
+      "sku": "43N23P",
+      "displayName": "MacBook Pro",
+      "price": "5399.99",
+      "modifiers": [
+        {
+          "id": 20,
+          "itemId": 13,
+          "price": "0",
+          "displayName": "Free Raspberry Pi B"
+        }
+      ],
+      "promotions": []
+    },
+
+    {
+      "id": 12,
+      "sku": "A304SD",
+      "displayName": "Alexa Speaker",
+      "price": "109.50",
+      "modifiers": [],
+      "promotions": [
+        {
+          "id": 30,
+          "itemId": 12,
+          "name": "Buy more than 3, get %10 off",
+          "autoApply": true,
+          "requirements": {
+            "minQuantity": 3
+          },
+          "adjustments": [
+            {
+              "type": "discount",
+              "properties": {
+                "amount": "10",
+                "percent": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": 13,
+      "sku": "234234",
+      "displayName": "Raspberry Pi B",
+      "price": "30.00",
+      "modifiers": [],
+      "promotions": []
+    }
+  ]
+}

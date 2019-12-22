@@ -1,0 +1,29 @@
+{
+  "name": "order-system-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --watch client --exec \"npm run build\" & npm run server",
+    "server": "nodemon server/server.js",
+    "build": "node --experimental-modules buildClient.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B-3PO/order-system-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/B-3PO/order-system-demo/issues"
+  },
+  "homepage": "https://github.com/B-3PO/order-system-demo#readme",
+  "dependencies": {
+    "@webformula/pax-core": "github:webformula/pax-core#v0.6.0-beta",
+    "big.js": "^5.2.2",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2"
+  }
+}
