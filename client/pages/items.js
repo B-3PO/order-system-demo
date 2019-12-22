@@ -43,7 +43,7 @@ export default class Items extends Page {
   }
 
   get title() {
-    return 'Items';
+    return 'Store';
   }
 
   get items() {
@@ -96,7 +96,7 @@ export default class Items extends Page {
 
   template() {
     return html`
-      <h2>Available items</h2>
+      <h2>Store</h2>
 
       <mdw-list class="mdw-three-line">
         ${this.items.map(item => html`

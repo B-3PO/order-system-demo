@@ -12,14 +12,14 @@ export default function () {
           <mdw-list>
             <mdw-list-item href="#/items" href-alt="#/">
               <span class="mdw-list-item__graphic material-icons">home</span>
-              Items
+              Store
             </mdw-list-item>
 
             <mdw-list-item href="#/cart">
               <span class="mdw-list-item__graphic material-icons">shopping_cart</span>
               Cart
             </mdw-list-item>
-            
+
           </mdw-list>
         </mdw-drawer-content>
       </mdw-drawer-fixed>
