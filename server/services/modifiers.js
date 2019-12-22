@@ -17,6 +17,7 @@ exports.applyModifiers = async (itemId, quantity) => {
   if (modifiers && modifiers.length) await setCartItemModifiers(itemId, modifiers, cartItem.quantity);
 };
 
+// add modifer to item and decrement inventory
 async function applyModifiers(itemId, quantity) {
   const item = await getItem(itemId);
   const allInventory = await getInventory();
@@ -27,27 +28,7 @@ async function applyModifiers(itemId, quantity) {
   return availableModifiers;
 }
 
-
-// exports.applyModifiers = async (cart) => {
-//   await Promise.all(cart.items.map(async ({ itemId, quantity }) => {
-//     const modifiers = await applyModifiers(itemId, quantity);
-//
-//     if (currentItemId === itemId) {
-//       modifiers.forEach(modifier => {
-//         decrementInventory(modifier.itemId, 1);
-//       });
-//     }
-//
-//     await setCartItemModifiers(itemId, modifiers, quantity);
-//   }));
-// };
-
-// async function applyModifiers(itemId, quantity) {
-//   const item = await getItem(itemId);
-//   const allInventory = await getInventory();
-//   return item.modifiers.filter(({ itemId }) => validateModifiers(itemId, quantity, allInventory));
-// }
-
+// return inventory availability for removed modifier
 exports.removeModifiers = async (itemId, quantity) => {
   const item = await getItem(itemId);
 
@@ -58,12 +39,11 @@ exports.removeModifiers = async (itemId, quantity) => {
   });
 };
 
-
+// validate modifier
 function validateModifiers(itemId, quantity, allInventory) {
   const { available } = allInventory.find(i => i.itemId === itemId);
 
   // meets availability
-  console.log(available, quantity);
   if (available < quantity) return false;
   return true;
 }

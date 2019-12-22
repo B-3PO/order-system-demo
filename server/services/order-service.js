@@ -67,10 +67,10 @@ exports.addItemToCart = async ({ itemId, quantity }) => {
   await applyModifiers(itemId, quantity);
 
   // handle promotions
-  await applyItemPromotions(await getCart());
+  await applyItemPromotions();
 
   // calculate order
-  await calculateOrder(await getCart());
+  await calculateOrder();
 
   return getCart();
 };

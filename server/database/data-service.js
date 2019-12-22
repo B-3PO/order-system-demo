@@ -1,3 +1,7 @@
+// The data is initially loaded from a json file
+// once loaded the data is managed in memeory
+// This service is meant to simulate interacting with a database for convinience
+
 const rawData = require('./data.json');
 const cart = {
   items: [],

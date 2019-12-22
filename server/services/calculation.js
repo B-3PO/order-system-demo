@@ -1,11 +1,14 @@
 const Big = require('big.js');
 
 const {
+  getCart,
   getItem,
   updateCartCalculations
 } = require('../database/data-service.js');
 
-exports.calculateOrder = async cart => {
+// callculate all items and adjustments
+exports.calculateOrder = async () => {
+  const cart = await getCart();
   const itemCalculations = await calculateItems(cart.items);
   await updateCartCalculations({
     items: itemCalculations.items,
@@ -18,6 +21,7 @@ exports.calculateOrder = async cart => {
 
 
 async function calculateItems(items) {
+  // prep items for calculations
   items = await Promise.all(items.map(async ({ itemId, quantity, promotions }) => {
     const item = await getItem(itemId);
     return {
@@ -27,6 +31,7 @@ async function calculateItems(items) {
     };
   }));
 
+  // calculate base item and item promotions
   const itemCalculations = items.map(({ item, quantity, promotions = [] }) => {
     const subtotal = Big(item.price).times(quantity);
     const discount = calculateAdjustments(subtotal, promotions.flatMap(({ adjustments }) => adjustments));
@@ -39,6 +44,7 @@ async function calculateItems(items) {
     };
   });
 
+  // get totals for all items
   const total = itemCalculations.reduce((a, { subtotal, discount }) => a.plus(subtotal).plus(discount), Big(0));
   const subtotal = itemCalculations.reduce((a, { subtotal }) => a.plus(subtotal), Big(0));
   const discount = itemCalculations.reduce((a, { discount }) => a.plus(discount), Big(0));
@@ -51,7 +57,7 @@ async function calculateItems(items) {
   };
 }
 
-
+// calculate item adjustments
 function calculateAdjustments(subtotal, adjustments) {
   return adjustments
     .filter(({ type }) => type === 'discount')

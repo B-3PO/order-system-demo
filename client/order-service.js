@@ -1,4 +1,4 @@
-const orderService = new class {
+export default new class {
   constructor() {
     if (window.axios) {
       this.axiosClient = window.axios.create({
@@ -37,7 +37,3 @@ const orderService = new class {
     return data.cart;
   }
 };
-
-export default orderService;
-
-globalThis.orderService = orderService;

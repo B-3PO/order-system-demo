@@ -1,3 +1,5 @@
+// build settings for client
+
 import { build } from '@webformula/pax-core';
 
 build({
